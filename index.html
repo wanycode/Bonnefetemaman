@@ -169,11 +169,17 @@ body::before {
   padding: 34px 34px 28px;
   overflow: auto;
   box-shadow: 0 30px 90px rgba(100, 40, 80, 0.18);
-  transition: transform 0.8s ease;
+  transition: transform 0.8s ease, opacity 0.4s ease, visibility 0.4s ease;
   z-index: 20;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 .show {
   transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 .letter h1 {
   font-family: 'Great Vibes', cursive;
@@ -401,7 +407,12 @@ for (let i = 0; i < 9; i++) {
 const text = `Chère Maman,\n\nAujourd'hui nous voulions simplement te dire merci.\n\nMerci pour ton amour, ta patience, ton soutien et tous les moments précieux que nous partageons.\n\nTu illumines nos vies chaque jour par ta gentillesse, ta force et ton sourire.\n\nNous sommes extrêmement chanceux d'avoir une maman aussi merveilleuse que toi.\n\nPeu importe où la vie nous mènera, tu resteras toujours notre plus grand repère.\n\nNous t'aimons plus que les mots ne pourront jamais l'exprimer.\n\nBonne Fête des Mères ❤️`;
 let started = false;
 const target = document.getElementById('typed');
+window.history.scrollRestoration = 'manual';
+window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
+});
 function startExperience() {
+  window.scrollTo({ top: 0, behavior: 'instant' });
   document.getElementById('intro').style.display = 'none';
   document.getElementById('scene').style.display = 'flex';
   document.getElementById('music').play().catch(() => {});

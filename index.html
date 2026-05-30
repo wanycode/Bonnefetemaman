@@ -122,11 +122,12 @@ body::before {
 }
 .envelope {
   position: relative;
-  width: 340px;
-  height: 230px;
+  width: clamp(240px, 82vw, 340px);
+  height: clamp(160px, 52vw, 230px);
   cursor: pointer;
   transform-style: preserve-3d;
   transition: transform 0.9s ease;
+  min-width: 220px;
 }
 .envelope:hover {
   transform: translateY(-8px);
@@ -313,7 +314,7 @@ body::before {
 }
 @media (max-width: 760px) {
   .hero .panel { width: 100%; padding: 30px 20px 32px; }
-  .envelope { width: 280px; height: 190px; }
+  .envelope { width: min(72vw, 280px); height: min(170px, 48vw); }
   .letter { width: min(96%, 640px); }
 }
 @media (max-width: 620px) {
